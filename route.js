@@ -4,6 +4,7 @@ import Login from "./Screens/Login";
 import Register from "./Screens/Registration";
 
 import Home from "./Screens/Main/Home";
+import CreateScreen from "./Screens/Main/CreateScreen";
 
 // import icons
 
@@ -26,6 +27,7 @@ const useRoute = (isAuth) => {
           name="Login"
           component={Login}
         />
+        {/* тимчасово тут, поки не підключен редакс для зміни стану */}
         <AuthStack.Screen
           options={{ headerShown: false }}
           name="Home"

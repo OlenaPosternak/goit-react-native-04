@@ -9,17 +9,16 @@ import {
 
 import LogOutIcon from "../../assets/img/log-out.svg";
 
-const PostsScreen = ({ onLayout }) => {
-
-
+const PostsScreen = ({ onLayout, navigation }) => {
   return (
     <ScrollView style={styles.container} onLayout={onLayout}>
       <View style={styles.header}>
         <Text style={{ ...styles.title, fontFamily: "RobotoBold" }}>Posts</Text>
         <TouchableOpacity
           style={styles.logOutBtn}
-        //   додати зміну аус стейту на фолс ?
-        //   onPress={() =>}
+          onPress={() => navigation.navigate("Login")}
+          //   додати зміну аус стейту на фолс ?
+          //   onPress={() =>}
         >
           <LogOutIcon width={24} height={24} />
         </TouchableOpacity>

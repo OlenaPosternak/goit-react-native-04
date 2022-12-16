@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import { createStackNavigator } from "@react-navigation/stack";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 import {
   Keyboard,
@@ -16,22 +14,9 @@ import {
 import ArrowLeft from "../../assets/img/arrow-left.svg";
 import MapIcon from "../../assets/img/map-pin.svg";
 import Photo from "../../assets/img/Photo.svg";
+import Trash from "../../assets/img/trash.svg";
 
-const CreateStack = createStackNavigator();
-
-const CreateScreen = () => {
-  return (
-    <CreateStack.Navigator initialRouteName="Create">
-      <CreateStack.Screen
-        options={{ headerShown: false }}
-        name="CreateScreen"
-        component={CreateScreenTEST}
-      />
-    </CreateStack.Navigator>
-  );
-};
-
-const CreateScreenTEST = ({ onLayout }) => {
+export const CreateScreen = ({ onLayout }) => {
   const [name, setName] = useState("");
   const [location, setLocation] = useState("");
 
@@ -67,54 +52,70 @@ const CreateScreenTEST = ({ onLayout }) => {
               <ArrowLeft width={24} height={24} />
             </TouchableOpacity>
           </View>
-          <View style={{ ...styles.imgThumb }}>
-            <TouchableOpacity>
-              <Photo />
-            </TouchableOpacity>
-          </View>
-          <View style={styles.form}>
-            <TouchableOpacity>
-              <Text style={{ ...styles.download, fontFamily: "Roboto" }}>
-                Download a photo
-              </Text>
-            </TouchableOpacity>
-            <TextInput
-              value={name}
-              onChangeText={nameHandler}
-              onFocus={() => {
-                setIsShowKeyboard(true);
-              }}
-              placeholder="Name"
-              style={{
-                ...styles.input,
-                fontFamily: "Roboto",
-              }}
-            />
+          <View
+            style={{
+              height: "100%",
+              justifyContent: "space-between",
+            }}
+          >
             <View>
-              <TextInput
-                value={location}
-                onChangeText={locationHandler}
-                onFocus={() => {
-                  setIsShowKeyboard(true);
-                }}
-                placeholder="Location"
-                style={{
-                  ...styles.input,
-                  paddingLeft: 28,
-                  fontFamily: "Roboto",
-                }}
-              />
-              <MapIcon style={styles.location} />
+              <View style={{ ...styles.imgThumb }}>
+                <TouchableOpacity>
+                  <Photo />
+                </TouchableOpacity>
+              </View>
+              <View style={styles.form}>
+                <TouchableOpacity>
+                  <Text style={{ ...styles.download, fontFamily: "Roboto" }}>
+                    Download a photo
+                  </Text>
+                </TouchableOpacity>
+                <TextInput
+                  value={name}
+                  onChangeText={nameHandler}
+                  onFocus={() => {
+                    setIsShowKeyboard(true);
+                  }}
+                  placeholder="Name"
+                  style={{
+                    ...styles.input,
+                    fontFamily: "Roboto",
+                  }}
+                />
+                <View>
+                  <TextInput
+                    value={location}
+                    onChangeText={locationHandler}
+                    onFocus={() => {
+                      setIsShowKeyboard(true);
+                    }}
+                    placeholder="Location"
+                    style={{
+                      ...styles.input,
+                      paddingLeft: 28,
+                      fontFamily: "Roboto",
+                    }}
+                  />
+                  <MapIcon style={styles.location} />
+                </View>
+                <TouchableOpacity
+                  //  перевіряємо на наявність всіх наних і активуємо тоді кнопку
+                  //   disabled = { data ? false : true }
+                  style={styles.submitBtn}
+                  activeOpacity={0.8}
+                  onPress={onPost}
+                >
+                  <Text style={{ fontFamily: "Roboto" }}>POST</Text>
+                </TouchableOpacity>
+              </View>
             </View>
-            <TouchableOpacity
-              //  перевіряємо на наявність всіх наних і активуємо тоді кнопку
-              //   disabled = { data ? false : true }
-              style={styles.submitBtn}
-              activeOpacity={0.8}
-              onPress={onPost}
-            >
-              <Text style={{ fontFamily: "Roboto" }}>POST</Text>
-            </TouchableOpacity>
+            <View style={{ alignItems: "center" }}>
+              <TouchableOpacity
+              //   onPress={()=>{}} - буде щось очищати або видаляти
+              >
+                <Trash width={70} height={40} />
+              </TouchableOpacity>
+            </View>
           </View>
         </View>
       </TouchableWithoutFeedback>

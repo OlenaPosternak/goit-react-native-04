@@ -2,7 +2,7 @@ import { TextInput } from "react-native-gesture-handler"
 
 const CommentsScreen = ()=>{
     return(
-        <TextInput>CommentsScreen</TextInput>
+        <TextInput style={{paddingTop:100}}>CommentsScreen</TextInput>
     )
 }
 

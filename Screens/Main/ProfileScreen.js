@@ -66,7 +66,10 @@ const ProfileScreen = ({ onLayout }) => {
               <View style={styles.image_thumb}>
                 <Delete style={styles.delBtn} width={25} height={25} />
               </View>
-              <TouchableOpacity style={styles.logOutBtn}>
+              <TouchableOpacity
+                onPress={() => navigation.navigate("Login")}
+                style={styles.logOutBtn}
+              >
                 <LogOutIcon width={24} height={24} />
               </TouchableOpacity>
               <Text style={{ ...styles.title, fontFamily: "RobotoBold" }}>

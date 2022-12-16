@@ -16,8 +16,6 @@ import {
   View,
 } from "react-native";
 
-import * as SplashScreen from "expo-splash-screen";
-
 const Registration = ({ navigation, onLayout }) => {
   const [login, setLogin] = useState("");
   const [email, setEmail] = useState("");
@@ -36,11 +34,14 @@ const Registration = ({ navigation, onLayout }) => {
   const emailHandler = (text) => setEmail(text);
   const passwordHandler = (text) => setPassword(text);
 
-  const onLogin = () => {
+  const onRegister = () => {
     console.log(`${login} + ${password}` + `${email}`);
+
     setLogin("");
     setPassword("");
     setEmail("");
+
+    navigation.navigate("Home");
 
     setIsShowKeyboard(false);
     Keyboard.dismiss();
@@ -141,7 +142,7 @@ const Registration = ({ navigation, onLayout }) => {
               <TouchableOpacity
                 style={styles.btn}
                 activeOpacity={0.8}
-                onPress={onLogin}
+                onPress={onRegister}
               >
                 <Text style={{ ...styles.btnTitle, fontFamily: "Roboto" }}>
                   SING UP
